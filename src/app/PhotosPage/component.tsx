@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { useDebounce } from "use-debounce";
+// import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+// import { useDebounce } from "use-debounce";
 import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
 import LoadingZone from "../../components/core/LoadingZone";
 
 import "./style.css";
@@ -13,8 +15,8 @@ export interface PhotosPageProps {
 }
 
 function PhotosPage(props: PhotosPageProps) {
-  const [search, setSearch] = useState('');
-  const [searchValue] = useDebounce(search, 500);
+  const [search, setSearch] = useState("");
+  // const [searchValue] = useDebounce(search, 500);
 
   let baseClassName = "PhotosPage";
   let className = baseClassName;
@@ -26,12 +28,12 @@ function PhotosPage(props: PhotosPageProps) {
   let handleSearchSubmit = (event) => {
     event.preventDefault();
 
-    props.onSearch(searchValue);
+    props.onSearch(search);
   };
 
-  useEffect(() => {
-    props.onSearch(searchValue);
-  }, [searchValue]);
+  // useEffect(() => {
+  //   props.onSearch(searchValue);
+  // }, [searchValue]);
 
   let contentComponent: any = null;
 
@@ -56,16 +58,28 @@ function PhotosPage(props: PhotosPageProps) {
 
   return (
     <div className={className}>
-      <div className={`${baseClassName}__filters`}>
-        <form onSubmit={handleSearchSubmit}>
-          <TextField
-            id="outlined-basic"
-            label="Search"
-            variant="outlined"
-            onChange={handleSearchChange}
-          />
-        </form>
-      </div>
+      <form
+        className={`${baseClassName}__filters`}
+        onSubmit={handleSearchSubmit}
+      >
+        <TextField
+          id="outlined-basic"
+          label="Search"
+          variant="outlined"
+          onChange={handleSearchChange}
+        />
+        <Button
+          disabled={props.loading}
+          variant="contained"
+          sx={{
+            height: 34,
+            marginTop: 1,
+          }}
+          onClick={handleSearchSubmit}
+        >
+          Search
+        </Button>
+      </form>
       <div className={`${baseClassName}__content`}>{contentComponent}</div>
     </div>
   );
