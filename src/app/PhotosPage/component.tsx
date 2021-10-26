@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDebounce } from "use-debounce";
 import TextField from "@mui/material/TextField";
 import LoadingZone from "../../components/core/LoadingZone";
 
@@ -8,24 +9,30 @@ export interface PhotosPageProps {
   errors: any;
   loading: boolean;
   photos: any;
+  onSearchChange: (value: string) => void;
   onSearch: (value: string) => void;
 }
 
 function PhotosPage(props: PhotosPageProps) {
-  const [address, setAddress] = useState("");
+  const [search, setSearch] = useState('');
+  const [searchValue] = useDebounce(search, 500);
 
   let baseClassName = "PhotosPage";
   let className = baseClassName;
 
   let handleSearchChange = (event) => {
-    setAddress(event.target.value);
+    setSearch(event.target.value);
   };
 
   let handleSearchSubmit = (event) => {
     event.preventDefault();
 
-    props.onSearch(address);
+    props.onSearch(searchValue);
   };
+
+  useEffect(() => {
+    props.onSearch(searchValue);
+  }, [searchValue]);
 
   let contentComponent: any = null;
 
