@@ -1,0 +1,41 @@
+.PhotosPage {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 4px;
+
+  /* @media (--screen-sm) {
+  } */
+}
+
+.PhotosPage__filters {
+  display: flex;
+  min-height: 60px;
+  align-items: center;
+  padding: 5px 0;
+}
+
+.PhotosPage__content {
+  display: flex;
+  width: 100%;
+  flex-grow: 1;
+  flex-wrap: wrap;
+}
+
+.PhotosPage__img {
+  flex: 1;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  margin: 2px;
+}
+
+@media (min-width: 800px) {
+  .PhotosPage {
+    padding: 10px;
+  }
+
+  .PhotosPage__filters {
+    padding: 10px 0;
+  }
+}

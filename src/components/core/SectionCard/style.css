@@ -1,0 +1,26 @@
+.SectionCard {
+  display: flex;
+  flex-direction: column;
+  border-radius: 3px;
+  border: 1px solid lightgray;
+}
+
+.SectionCard__Header {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 14px;
+  border-bottom: 1px solid lightgray;
+  padding: 12px 30px;
+}
+
+.SectionCard__Header--center {
+  justify-content: center;
+}
+
+.SectionCard__Content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 16px;
+}

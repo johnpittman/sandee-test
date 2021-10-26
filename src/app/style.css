@@ -1,0 +1,17 @@
+#app {
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+
+  font-size: 16px;
+
+  font-family: Arial;
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+}
