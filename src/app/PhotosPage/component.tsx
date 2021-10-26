@@ -9,7 +9,6 @@ export interface PhotosPageProps {
   errors: any;
   loading: boolean;
   photos: any;
-  onSearchChange: (value: string) => void;
   onSearch: (value: string) => void;
 }
 

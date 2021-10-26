@@ -23,9 +23,6 @@ function PhotosPageContainer() {
       onSearch={(value) => {
         dispatch(retrievePhotos({ q: value }));
       }}
-      onSearchChange={(value) => {
-        dispatch(retrievePhotos({ q: value }));
-      }}
     />
   );
 }

@@ -15,15 +15,12 @@ export function selectPhotosLoading(state) {
 export const selectPhotoURLs = createSelector(
   selectPhotosData,
   (photosData) => {
-    console.log(photosData);
-
     let result = photosData?.photos?.photo?.map((photoItem) => {
       return {
         title: photoItem.title,
         url: `https://live.staticflickr.com/${photoItem.server}/${photoItem.id}_${photoItem.secret}.jpg`,
       };
     });
-    console.log(result);
 
     return result;
   }
